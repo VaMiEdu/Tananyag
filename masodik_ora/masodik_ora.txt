@@ -1,0 +1,101 @@
+
+DateTime osztály:
+
+A DateTime osztályon keresztül kérdezhetjük le az aktuális időt és dátumot, az alábbi statikus tulajdonságok valamelyikével:
+DateTime.Now;
+A jelenlegi dátum és idő lekérdezése
+DateTime.Today;
+A mai dátum lekérdezése
+DateTime.UtcNow;
+
+
+ var ido = DateTime.Now;
+Console.WriteLine("{0:d}", ido);
+            Console.WriteLine("{0:D}", ido);
+            Console.WriteLine("{0:t}", ido);
+            Console.WriteLine("{0:T}", ido);
+            Console.WriteLine("{0:f}", ido);
+            Console.WriteLine("{0:F}", ido);
+            Console.WriteLine("{0:g}", ido);
+            Console.WriteLine("{0:G}", ido);
+            Console.WriteLine("{0:M}", ido);
+            Console.WriteLine("{0:r}", ido);
+            Console.WriteLine("{0:Y}", ido);
+            Console.WriteLine("{0:yyyy-mm-dd, dddd tt hh:mm:ss}", ido);
+            Console.ReadKey();
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Math osztály:
+
+A C# matematikai függvényei a Math statikus osztályban vannak megvalósítva. 
+
+Két érték közül a nagyobb értéket adja vissza.
+value Math.Max(value1, value2);
+
+Két érték közül a kisebb értéket adja vissza.
+value Math.Min(value1, value2);
+
+Hatványozás. Az első paraméter a hatvány alapja, a második paraméter a hatvány kitevőt adja meg. N-edik gyök számítására is alkalmas a hatványozás szabályai alapján, ha a kitevő tört.
+double Math.Pow(double val, double exponent);
+
+A paraméterként megadott számot a legközelebbi egész számra kerekíti a kerekítés szabályainak megfelelően.
+double Math.Round(double val, int digits);
+
+Négyzetgyökvonás.
+double Math.Sqrt(double val);
+
+PI értéke
+Math.PI
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Azonossági rendszerek, logikai kapuk:
+
+https://csharptutorial.hu/docs/hellovilag-hellocsharp/2-a-nyelv-alapjai/boole-algebra/
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Kivételkezelés:
+
+https://csharptutorial.hu/docs/hellovilag-hellocsharp/4-vezerlesi-szerkezetek-es-blokkok/try-catch/
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Switch-case szerkezet:
+
+Ezen szerkezet akkor hasznos, ha egy változó konstans, előre tudott értékeire szeretnénk reagálni megadott módon. 
+A default ágba a vezérlés akkor kerül, ha a fentebb megadott egyik case vezérlési eset sem teljesül.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Tömbök:
+
+Deklaráció:
+int[] tomb;
+
+Tömblétrehozás:
+tomb = new int[10];
+
+Értékadás:
+tomb[5] = 25; vagy tomb[5] = 6 * 2 – 29;
+
+Érték lekérdezése:
+5 * 10 – tomb[5] + 2
+
+A deklaráció és a tömblétrehozás összevonható:
+int[] tomb = new int[10];
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Break, continue:
+
+Minden C#-os ciklusban alkalmazhatóak
+Többnyire helyettesíthetők (continue helyett if v. if-else, break helyett pl. a for ciklus fejében feltétel)
+
+-break: kilépés a ciklusból
+-continue: kihagyja a ciklusmenetet, a kövvetkező jön azonnal
+
+---------------------------------------------------------------------------------------------------------------------------------------
