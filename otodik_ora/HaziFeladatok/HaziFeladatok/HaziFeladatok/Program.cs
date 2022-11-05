@@ -78,14 +78,58 @@ namespace HaziFeladatok
 
         public void SetA(double value)
         {
-            if (value > 0)
+            double regiA = a;
+
+            a = value;
+            if (!SzerkeszthetoEzAHaromszog())
             {
-                a = value;
+                a = regiA;
             }
         }
 
-        public double B { get => b; set => b = value; }
-        public double C { get => c; set => c = value; }
+        public double B
+        {
+            get { return b; }
+            set
+            {
+                double regiB = b;
+
+                b = value;
+                if (!SzerkeszthetoEzAHaromszog())
+                {
+                    b = regiB;
+                }
+            }
+        }
+
+        public double C
+        {
+            get { return c; }
+            set
+            {
+                if (SzerkeszthetoEzAHaromszog())
+                {
+                    c = value;
+                }
+            }
+        }
+
+
+        public Haromszog()
+        {
+            Random rand = new Random();
+            do
+            {
+                a = rand.Next(0, 101);
+                b = rand.Next(0, 101);
+                c = rand.Next(0, 101);
+            }
+            while (!SzerkeszthetoEzAHaromszog());
+        }
+        private bool SzerkeszthetoEzAHaromszog()
+        {
+            return (a + b > c) && (a + c > b) && (b + c > a);
+        }
 
         public double Kerulet()
         {
@@ -103,6 +147,9 @@ namespace HaziFeladatok
             //TODO throw argument exception
             return -1;
         }
+
+
+
     }
     #endregion
 
@@ -113,21 +160,24 @@ namespace HaziFeladatok
         {
             var haromSzog = new Haromszog();
 
-            var kerulet = haromSzog.Kerulet();
-            var terulet = haromSzog.Terulet();
+            haromSzog.SetA(15);
 
-            List<Teglalap> teglalapok = new List<Teglalap>();
 
-            for (int i = 0; i < 10; i++)
-            {
-                Teglalap teglalap = new Teglalap();
-                teglalapok.Add(teglalap);
-            }
+            //var kerulet = haromSzog.Kerulet();
+            //var terulet = haromSzog.Terulet();
 
-            foreach (var teglalap in teglalapok)
-            {
-                Console.WriteLine(teglalap.ToString());
-            }
+            //List<Teglalap> teglalapok = new List<Teglalap>();
+
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    Teglalap teglalap = new Teglalap();
+            //    teglalapok.Add(teglalap);
+            //}
+
+            //foreach (var teglalap in teglalapok)
+            //{
+            //    Console.WriteLine(teglalap.ToString());
+            //}
         }
     }
 }
