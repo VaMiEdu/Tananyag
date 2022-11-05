@@ -83,6 +83,8 @@ namespace Polimorphism
             "valami".ConsolraIratas();
 
             var szokozNelkul = "mondat szokozzel".SzokozokAsszimilalasa();
+
+            var celsius = (10.0).CelsiusToFahrenHeit();
         }
     }
 
@@ -98,5 +100,18 @@ namespace Polimorphism
             return valami.Replace(" ", "");
         }
 
+    }
+
+    static class MeasurementConverters
+    {
+        public static double FahrenheitToCelsius(this double value)
+        {
+            return (value - 32) * 5 / 9;
+        }
+
+        public static double CelsiusToFahrenHeit(this double value)
+        {
+            return value * 9 / 5 + 32;
+        }
     }
 }
