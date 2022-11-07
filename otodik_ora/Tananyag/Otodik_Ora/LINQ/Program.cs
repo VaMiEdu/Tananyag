@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 
 namespace LINQ
 {
@@ -24,7 +23,9 @@ namespace LINQ
         {
             //LINQ
             //language integrated query 
+            //expression tree - kifejezésfa
 
+            List<int> numbers = new List<int>() { 1, 3, 7, 4, 5, 10, 40, 20 };
             List<string> dogBreeds = new List<string>();
 
             dogBreeds.Add("Bulldog");
@@ -34,16 +35,12 @@ namespace LINQ
             dogBreeds.Add("Border Collie");
             dogBreeds.Add("Siberian Husky");
 
-            List<int> numbers = new List<int>() { 1, 3, 7, 4, 5, 10, 40, 20 };
 
-            //contains
             var dogSpaces = from dog in dogBreeds where dog.Contains(" ") select dog;
 
-            //expression tree - kifejezésfa
 
             var greaterThan5 = from number in numbers
                                where number > 5
-                               orderby number descending
                                select number;
 
             var novekvoLegyenASorrent = true;
@@ -62,12 +59,11 @@ namespace LINQ
                         select newNumbers;
             }
 
-            greaterThan5.ToList();
+            var numbersAsList = greaterThan5.ToList();
 
-            var greaterThan10 = numbers.Where(n => n > 10).OrderByDescending(n => n);
-
+            List<int> greaterThan10 = numbers.Where(n => n > 10).OrderBy(n => n).ToList();
             bool mindegyikSzamNagyobbMintNulla = numbers.All(n => n > 0);
-            bool vanEOlyanSzamAmelyikNagyobbMinot = numbers.Any(n => n > 5);
+            bool vanEOlyanSzamAmelyikNagyobbMint5 = numbers.Any(n => n > 5);
 
             int[] numbersAsArray = greaterThan5.ToArray();
 
@@ -97,17 +93,20 @@ namespace LINQ
             var gazdikEsKutyusok = from kutya in kutyak
                                    join gazdi in gazdik
                                    on kutya.Gazdi equals gazdi.Nev
-                                    
+
                                    select new
                                    {
                                        GazdiNeve = gazdi.Nev,
                                        GazdiKora = gazdi.Eletkor,
-                                       KutyusNeve = kutya.Eletkor
+                                       KutyusNeve = kutya.Nev
                                    };
 
-
-
-
+            var gazdikEsKutyusokAsGroup = from gazdiKutyus in gazdikEsKutyusok
+                                          group new
+                                          {
+                                              gazdiKutyus.KutyusNeve
+                                          } by gazdiKutyus.GazdiNeve into newGroup
+                                          select newGroup;
         }
     }
 }

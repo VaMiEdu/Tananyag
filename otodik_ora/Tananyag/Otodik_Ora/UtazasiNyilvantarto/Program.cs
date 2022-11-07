@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace UtazasNyilvantarto
+namespace UtazasiNyilvantarto
 {
     class Utazo
     {
@@ -21,8 +21,6 @@ namespace UtazasNyilvantarto
 
         public Utazo(string nev)
         {
-            //Allomasok = new Dictionary<DateTime, string>();
-
             if (string.IsNullOrWhiteSpace(nev))
             {
                 throw new ArgumentException($"A megadott név ({nev}) nem megfelelő formátumú!");
@@ -48,25 +46,20 @@ namespace UtazasNyilvantarto
             var egyikHely = Allomasok.First(x => x.Value == egyik);
             var masikHely = Allomasok.First(x => x.Value == masik);
 
-            if (egyikHely.Key < masikHely.Key)
-            {
-                return egyikHely.Value;
-            }
+            //if (egyikHely.Key < masikHely.Key)
+            //{
+            //    return egyikHely.Value;
+            //}
 
-            return masikHely.Value;
+            //return masikHely.Value;
 
-            //return egyikHely.Key < masikHely.Key ? egyikHely.Value : masikHely.Value;  // conditional operator vagy ternary operator
-
-            //Készítsen metódust, amely megadja azokat a helyeket, ahol az utazó többször is járt!
-            //string[] HelyekAholTobbszorJart()
-
+            return egyikHely.Key < masikHely.Key ? egyikHely.Value : masikHely.Value;  // conditional operator vagy ternary operator
         }
 
         public List<string> HelyekAholTobbszorJart()
         {
             return Allomasok.GroupBy(x => x.Value).Where(g => g.Count() > 1).Select(g => g.Key).ToList();
         }
-
     }
 
     internal class Program
@@ -90,7 +83,6 @@ namespace UtazasNyilvantarto
             {
                 Console.WriteLine(hely);
             }
-
         }
     }
 }

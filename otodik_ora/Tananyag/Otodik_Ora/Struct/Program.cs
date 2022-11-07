@@ -8,10 +8,12 @@ namespace Struct
         public DateTime Expiration { get; set; }
         public string Country { get; set; }
 
-        //public int Valami(int elso, int masodik)
-        //{
-        //    return elso + masodik;
-        //}
+        public readonly DateTime szulinap;
+
+        public Passport()
+        {
+            szulinap = new DateTime(1990, 02, 19);
+        }
     }
 
     public struct PassportAsStruct
@@ -26,9 +28,7 @@ namespace Struct
         static void Main(string[] args)
         {
             //Stack & heap (verem & kupac)
-
             //LIFO & FIFO (last in first out & first in first out)
-
 
             Passport elsoPassport = new Passport();
             elsoPassport.Number = "123";
@@ -41,7 +41,6 @@ namespace Struct
 
             PassportAsStruct passportAsStruct2 = passportAsStruct;
             passportAsStruct2.Number = "12";
-
         }
     }
 }

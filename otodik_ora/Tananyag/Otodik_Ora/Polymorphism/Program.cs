@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 
-namespace Polimorphism
+namespace Polymorphism
 {
     public class Shape
     {
@@ -58,7 +57,7 @@ namespace Polimorphism
         {
             Shape shape = new Shape();
             Circle circle = new Circle();
-            //Rectangle rectangle = new Rectangle();
+            //Rectangle rectangle = new Rectangle();  // Static class, nem lehet példányosítani
 
             Rectangle.Draw();
 
@@ -73,45 +72,13 @@ namespace Polimorphism
             List<Shape> alakzatok = new List<Shape>();
             alakzatok.Add(shape);
             alakzatok.Add(circle);
+
             //alakzatok.Add(rectangle);
 
             foreach (var alakzat in alakzatok)
             {
                 alakzat.Draw();
             }
-
-            "valami".ConsolraIratas();
-
-            var szokozNelkul = "mondat szokozzel".SzokozokAsszimilalasa();
-
-            var celsius = (10.0).CelsiusToFahrenHeit();
-        }
-    }
-
-    static class StringUtils
-    {
-        public static void ConsolraIratas(this string valami)
-        {
-            Console.WriteLine(valami);
-        }
-
-        public static string SzokozokAsszimilalasa(this string valami)
-        {
-            return valami.Replace(" ", "");
-        }
-
-    }
-
-    static class MeasurementConverters
-    {
-        public static double FahrenheitToCelsius(this double value)
-        {
-            return (value - 32) * 5 / 9;
-        }
-
-        public static double CelsiusToFahrenHeit(this double value)
-        {
-            return value * 9 / 5 + 32;
         }
     }
 }
