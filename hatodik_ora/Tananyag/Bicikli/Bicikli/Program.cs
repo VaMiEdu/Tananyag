@@ -4,6 +4,29 @@ using System.Linq;
 
 namespace Bicikli
 {
+    class Ember
+    {
+        public Pumpa Pumpa { get; set; }
+        public Bicikli Bicikli { get; set; }
+        //public Lampa ElsoLampa { get; set; }
+        //public Lampa HatsoLampa { get; set; }
+        //public List<Kerek> Kerekek { get; set; }
+
+        public Ember(Pumpa pumpa, Bicikli bicikli)
+        {
+            Pumpa = pumpa;
+            Bicikli = bicikli;
+        }
+
+        public void BicikliBeallitasa()
+        {
+            Bicikli.ElsoLampa.Mukodik = true;
+            Bicikli.HatsoLampa.Mukodik = true;
+
+            Pumpa.Felfuj(Bicikli.Kerekek, 6);
+        }
+    }
+
     class Jarmu
     {
         private bool megyE;
@@ -15,6 +38,13 @@ namespace Bicikli
         public Lampa HatsoLampa { get; set; }
 
         public double Sebesseg { get => sebesseg; set => sebesseg = value; }
+
+        public Jarmu(Lampa elsoLampa, Lampa hatsoLampa, List<Kerek> kerekek)
+        {
+            ElsoLampa = elsoLampa;
+            HatsoLampa = hatsoLampa;
+            Kerekek = kerekek;
+        }
 
         public void Lassit(double mennyiseg)
         {
@@ -59,7 +89,7 @@ namespace Bicikli
             return Kerekek.All(x => x.Nyomas >= 6);
         }
 
-        private bool LampakMukodnekE()
+        public bool LampakMukodnekE()
         {
             var elsoLampaMukodik = ElsoLampa.Mukodik;
             var hatsoLampaMukodik = HatsoLampa.Mukodik;
@@ -142,46 +172,54 @@ namespace Bicikli
     {
         static void Main(string[] args)
         {
-            Auto kocsi = new Auto();
+            //Auto kocsi = new Auto();
 
-            Lampa elsoLampa = new Lampa();
-            Lampa hatsoLampa = new Lampa();
+            //Lampa elsoLampa = new Lampa();
+            //Lampa hatsoLampa = new Lampa();
 
-            elsoLampa.Mukodik = true;
-            hatsoLampa.Mukodik = true;
+            //elsoLampa.Mukodik = true;
+            //hatsoLampa.Mukodik = true;
 
-            Kerek kerek1 = new Kerek();
-            Kerek kerek2 = new Kerek();
-            Kerek kerek3 = new Kerek();
-            Kerek kerek4 = new Kerek();
+            //Kerek kerek1 = new Kerek();
+            //Kerek kerek2 = new Kerek();
+            //Kerek kerek3 = new Kerek();
+            //Kerek kerek4 = new Kerek();
 
-            List<Kerek> kerekek = new List<Kerek>()
-            {
-                kerek1, kerek2, kerek3, kerek4
-            };
+            //List<Kerek> kerekek = new List<Kerek>()
+            //{
+            //    kerek1, kerek2, kerek3, kerek4
+            //};
+
+            //Pumpa pumpa = new Pumpa();
+            //pumpa.Felfuj(kerek1);
+
+            //pumpa.Felfuj(kerekek, 6);
+
+            //kerek1.Nyomas = 8;
+            //kerek2.Nyomas = 8;
+            //kerek3.Nyomas = 8;
+            //kerek4.Nyomas = 8;
+
+            //kocsi.HatsoLampa = hatsoLampa;
+            //kocsi.ElsoLampa = elsoLampa;
+            //kocsi.Kerekek.Add(kerek1);
+            //kocsi.Kerekek.Add(kerek2);
+            //kocsi.Kerekek.Add(kerek3);
+            //kocsi.Kerekek.Add(kerek4);
+
+            //kocsi.Gyorsit(10.0);
+            //-----------------------------------------------------------------
 
             Pumpa pumpa = new Pumpa();
-            pumpa.Felfuj(kerek1);
+            Bicikli bicikli = new Bicikli();
+            Lampa elsoLampa = new Lampa();
+            Lampa hatsooLampa = new Lampa();
 
-            pumpa.Felfuj(kerekek, 6);
+            List<Kerek> bicoKerekek = new List<Kerek>() { new Kerek(), new Kerek() };
 
+            Ember ember = new Ember(pumpa, bicikli, elsoLampa, hatsooLampa, bicoKerekek);
 
-
-            kerek1.Nyomas = 8;
-            kerek2.Nyomas = 8;
-            kerek3.Nyomas = 8;
-            kerek4.Nyomas = 8;
-
-            kocsi.HatsoLampa = hatsoLampa;
-            kocsi.ElsoLampa = elsoLampa;
-            kocsi.Kerekek.Add(kerek1);
-            kocsi.Kerekek.Add(kerek2);
-            kocsi.Kerekek.Add(kerek3);
-            kocsi.Kerekek.Add(kerek4);
-
-            kocsi.Gyorsit(10.0);
-
-
+            ember.BicikliBeallitasa();
         }
     }
 }
