@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Konyha", "RobotGep\Konyha.csproj", "{BFD636AA-0A98-4134-BC73-33AFAEA4CEAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFD636AA-0A98-4134-BC73-33AFAEA4CEAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFD636AA-0A98-4134-BC73-33AFAEA4CEAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFD636AA-0A98-4134-BC73-33AFAEA4CEAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFD636AA-0A98-4134-BC73-33AFAEA4CEAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EDE5F6D9-7DD8-4549-9A73-785C113A769E}
+	EndGlobalSection
+EndGlobal
