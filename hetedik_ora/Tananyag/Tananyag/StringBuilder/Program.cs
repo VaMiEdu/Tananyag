@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -30,12 +31,28 @@ namespace StringBuilder1
         }
     }
 
+    class FileMuveletek
+    {
+        public void WriteToFile(string path, string content)
+        {
+            using StreamWriter writer = new StreamWriter(path);
+
+            for (int i = 0; i < content.Length; i++)
+            {
+                writer.Write(content[i]);
+            }
+
+            writer.Close();
+        }
+    }
+
 
     internal class Program
     {
         static void Main(string[] args)
         {
             Vizsga[] eredmenyek = new Vizsga[20];
+            FileMuveletek fileMuveletek = new FileMuveletek();
 
             for (int i = 0; i < eredmenyek.Length; i++)
             {
@@ -51,6 +68,10 @@ namespace StringBuilder1
                 stringBuilder.AppendLine(eredmeny.VizsgaKod);
             }
 
+            fileMuveletek.WriteToFile(@"mindenvizsgazo.txt", stringBuilder.ToString());
+
+            stringBuilder = new StringBuilder();
+
             stringBuilder.AppendLine("A sikereses vizsgázók kódja:");
 
             foreach (var eredmeny in eredmenyek)
@@ -60,6 +81,9 @@ namespace StringBuilder1
                     stringBuilder.AppendLine(eredmeny.VizsgaKod);
                 }
             }
+
+            fileMuveletek.WriteToFile(@"sikeresvizsgazok.txt", stringBuilder.ToString());
+
 
             Console.WriteLine(stringBuilder.ToString());
         }
