@@ -51,6 +51,21 @@ namespace FileHandling
             //File class
 
             var szoveg = File.ReadAllLines("pelda2.txt");
+
+            //Directory class
+
+            Directory.CreateDirectory(@"C:\Valami");
+
+            Directory.Delete(@"C:\Valami");
+
+            var letezikE = Directory.Exists(@"C:\Valami");
+
+            var mappaTartalma = Directory.GetDirectories(@"C:\");
+
+            var files = Directory.GetFiles(@"C:\");
+
+            var files2 = Directory.GetFiles(@"C:\", "kiskutya*", SearchOption.AllDirectories);
+
         }
     }
 }
